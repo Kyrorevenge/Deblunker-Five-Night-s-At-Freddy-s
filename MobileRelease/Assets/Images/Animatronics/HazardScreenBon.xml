@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="HazardScreenBon" loop="true">
+    <frame index="0" name="Frame_0" x="0" y="0" w="652" h="1436" />
+    <frame index="1" name="Frame_1" x="0" y="1436" w="662" h="1432" />
+    </anim>
+  </animations>

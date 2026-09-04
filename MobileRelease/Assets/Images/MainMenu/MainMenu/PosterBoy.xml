@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="PosterBoy" loop="true">
+    <frame index="0" name="Frame_0" x="0" y="0" w="297" h="533" />
+    <frame index="1" name="Frame_1" x="0" y="533" w="296" h="535" />
+    </anim>
+  </animations>

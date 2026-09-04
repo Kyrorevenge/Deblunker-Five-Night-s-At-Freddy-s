@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="FreddyJumpscare" loop="true">
+    <frame index="0" name="IMG_3785" x="0" y="0" w="849" h="783" />
+    <frame index="1" name="IMG_3786" x="0" y="783" w="876" h="552" />
+    <frame index="2" name="IMG_3787" x="0" y="1335" w="865" h="545" />
+    <frame index="3" name="IMG_3788" x="0" y="1880" w="876" h="545" />
+    <frame index="4" name="IMG_3789" x="0" y="2425" w="849" h="643" />
+    </anim>
+  </animations>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="FredOfficeScene" loop="true">
+    <frame index="0" name="Fred_OfficeScene" x="0" y="0" w="381" h="719" />
+    <frame index="1" name="Door_Lift_0" x="381" y="0" w="597" h="318" />
+    <frame index="2" name="Door_Lift_1" x="0" y="719" w="664" h="289" />
+    <frame index="3" name="DecomFred_OfficeScene" x="664" y="719" w="377" h="714" />
+    </anim>
+  </animations>

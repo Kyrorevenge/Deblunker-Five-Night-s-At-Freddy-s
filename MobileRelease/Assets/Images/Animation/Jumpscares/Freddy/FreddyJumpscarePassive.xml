@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="FreddyJumpscarePassive" loop="true">
+    <frame index="0" name="Frame (1)" x="10" y="0" w="689" h="706" />
+    <frame index="1" name="Frame (2)" x="0" y="706" w="710" h="688" />
+    </anim>
+  </animations>

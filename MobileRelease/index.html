@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DFNAF" />
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>DFNAF Mobile</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="loading" class="overlay">
+      <div class="sheet">
+        <h3>Loading Assets…</h3>
+        <p id="load-status" class="hint">Using the PC Assets folder</p>
+      </div>
+    </div>
+
+    <header class="topbar">
+      <button id="menu-btn" class="btn ghost" type="button">MENU</button>
+      <div id="hud" class="hud hidden">
+        <span id="hud-clock">12 AM</span>
+        <span id="hud-power">100%</span>
+      </div>
+      <span id="version-badge" class="version">…</span>
+    </header>
+
+    <div id="outdated-banner" class="banner hidden" role="status">
+      A newer version is available. Refresh or reopen the home-screen app.
+      <button id="refresh-btn" class="btn tiny" type="button">Refresh</button>
+    </div>
+
+    <main id="scene-boot" class="scene hidden boot-scene">
+      <video id="boot-video" playsinline webkit-playsinline></video>
+      <p id="boot-start" class="intro-skip hidden">Tap to start</p>
+      <p id="boot-skip" class="intro-skip hidden">Tap to skip</p>
+    </main>
+
+    <main id="scene-warning" class="scene hidden warning-scene">
+      <p id="warning-text"></p>
+      <p id="warning-prompt" class="intro-skip">Tap to skip</p>
+    </main>
+
+    <main id="scene-menu" class="scene menu-scene">
+      <div id="menu-stage" class="pc-frame">
+      <img id="menu-bg" class="scene-art" alt="" />
+      <canvas id="menu-poster" class="menu-poster"></canvas>
+      <img id="menu-light" class="scene-art light-art" alt="" />
+      <canvas id="menu-static" class="menu-static"></canvas>
+      <div class="title-block">
+        <h1>FIVE NIGHTS AT FREDDY'S</h1>
+        <p class="eyebrow">D E B L U N K E R</p>
+        <p class="platform-tag">Mobile</p>
+        <span class="title-rule"></span>
+      </div>
+      <nav class="menu-stack">
+        <button id="btn-new" class="slant-btn" type="button">NEW GAME</button>
+        <button id="btn-continue" class="slant-btn stripe" type="button">
+          CONTINUE
+          <span id="continue-night" class="slant-sub"></span>
+        </button>
+        <button id="btn-scenes" class="slant-btn" type="button">NIGHTS 1–5</button>
+        <button id="btn-collections" class="slant-btn" type="button">COLLECTIONS</button>
+      </nav>
+      <button id="menu-boop" class="boop-hit menu-boop" type="button" aria-label="Freddy nose"></button>
+      <button id="btn-settings" class="menu-settings" type="button">SETTINGS</button>
+      <button id="btn-install" class="menu-install" type="button">ADD TO HOME SCREEN</button>
+      <aside id="nights-panel" class="nights-overlay hidden">
+        <div class="sheet nights-sheet">
+          <h3>NIGHTS 1–5</h3>
+          <div id="menu-night-picks" class="night-picks"></div>
+          <p class="hint">Nights 4 and 5 are locked on mobile.</p>
+          <button id="nights-back" class="btn ghost" type="button">BACK</button>
+        </div>
+      </aside>
+      </div>
+    </main>
+
+    <main id="scene-newspaper" class="scene hidden newspaper-scene">
+      <img id="newspaper-img" class="newspaper-img" alt="Newspaper" />
+      <p class="intro-skip">Tap to skip</p>
+    </main>
+
+    <main id="scene-hazard" class="scene hidden hazard-scene">
+      <p id="hazard-night">NIGHT 1</p>
+      <div id="hazard-warning" class="hazard-warning">NEW HAZARD</div>
+      <canvas id="hazard-portrait" class="hazard-portrait" aria-hidden="true"></canvas>
+      <div id="hazard-copy" class="hazard-copy">
+        <h2 id="hazard-name"></h2>
+        <p id="hazard-sub"></p>
+        <p id="hazard-desc"></p>
+      </div>
+      <button id="hazard-begin" class="hazard-begin" type="button">BEGIN SHIFT</button>
+      <p class="intro-skip">BEGIN SHIFT starts the night</p>
+    </main>
+
+    <main id="scene-nightcard" class="scene hidden nightcard-scene">
+      <h2 id="nightcard-title">Night 1</h2>
+      <ul id="nightcard-features"></ul>
+    </main>
+
+    <main id="scene-office" class="scene hidden">
+      <div id="office-view" class="office-view pc-frame">
+        <div id="office-pan" class="office-pan">
+          <div id="office-stage">
+            <canvas id="office-canvas"></canvas>
+            <div id="office-hotspots">
+              <button class="office-hit" data-act="left-door" type="button" aria-label="Left door"></button>
+              <button class="office-hit" data-act="right-door" type="button" aria-label="Right door"></button>
+              <button class="office-hit" data-act="left-light" type="button" aria-label="Left light"></button>
+              <button class="office-hit" data-act="right-light" type="button" aria-label="Right light"></button>
+              <button id="office-boop" class="office-hit boop-hit" data-act="office-boop" type="button" aria-label="Freddy nose"></button>
+              <button id="office-boop-2" class="office-hit boop-hit" data-act="office-boop" type="button" aria-label="Freddy nose"></button>
+            </div>
+          </div>
+        </div>
+        <div id="office-hud-left" class="office-hud-left">
+          <div id="office-clock" class="office-clock">12 AM</div>
+          <button id="btn-mute" class="mute-call hidden" type="button">MUTE</button>
+        </div>
+        <div id="office-power" class="office-power">
+          <div id="power-label">Power: 100%</div>
+          <div class="power-meter"><div id="power-fill" class="power-fill"></div></div>
+          <div id="power-popups"></div>
+        </div>
+        <p id="office-banner" class="office-banner hidden"></p>
+        <div id="cam-view" class="cam-view hidden">
+          <img id="cam-image" class="cam-image" alt="Camera" />
+          <div id="cam-sound-only" class="cam-sound-only hidden">
+            <span>SOUND ONLY</span>
+            <small>CAM 9</small>
+          </div>
+          <canvas id="cam-static" class="cam-static"></canvas>
+          <div id="cam-disabled" class="cam-disabled hidden">CAMERAS DISABLED</div>
+          <button id="cam-boop" class="office-hit boop-hit cam-boop hidden" type="button" aria-label="Freddy nose"></button>
+          <p id="cam-label" class="cam-label">CAM 1</p>
+          <p id="cam-occupancy" class="cam-occupancy hidden">Empty</p>
+          <button id="sabotage-hit" class="sabotage-hit hidden" type="button">Hits 0/25</button>
+          <button id="task-handle" class="task-handle hidden" type="button">&gt;</button>
+          <aside id="task-drawer" class="task-drawer">
+            <h3>TASKS</h3>
+            <p id="task-lock" class="task-lock hidden">LOCKED</p>
+            <div id="task-list"></div>
+            <button id="task-end" class="task-end hidden" type="button">End Shift</button>
+          </aside>
+          <div id="order-browser" class="order-browser hidden">
+            <header>
+              <span>Order Props</span>
+              <button id="order-close" type="button">X</button>
+            </header>
+            <div id="order-items" class="order-items"></div>
+            <button id="order-checkout" type="button">Hold Checkout</button>
+          </div>
+          <div id="cam-hud-wrap">
+            <img id="cam-hud" class="cam-hud" alt="" />
+            <div id="cam-hud-buttons"></div>
+          </div>
+        </div>
+        <canvas id="cam-flip" class="cam-flip-anim hidden"></canvas>
+        <div id="power-blackout" class="power-blackout hidden"></div>
+        <button id="btn-cameras" class="cam-flip" type="button">CAMERAS</button>
+        <button id="btn-charge" class="charge-hold" type="button">HOLD CHARGE</button>
+      </div>
+    </main>
+
+    <main id="scene-victory" class="scene hidden center-scene">
+      <h2 id="victory-title">6 AM</h2>
+      <p id="victory-cap">NIGHT SURVIVED</p>
+      <div class="menu-stack compact">
+        <button id="btn-next-night" class="btn primary" type="button">CONTINUE</button>
+        <button class="btn to-menu" type="button">MAIN MENU</button>
+      </div>
+    </main>
+
+    <main id="scene-defeat" class="scene hidden center-scene">
+      <h2>YOU DIDN'T MAKE IT</h2>
+      <p id="defeat-cap">Jumpscared</p>
+      <div class="menu-stack compact">
+        <button id="btn-retry" class="btn primary" type="button">RETRY</button>
+        <button class="btn to-menu" type="button">MAIN MENU</button>
+      </div>
+    </main>
+
+    <main id="scene-install" class="scene hidden center-scene">
+      <h2>Use on your phone</h2>
+      <ol class="help-list">
+        <li>Upload the whole <strong>MobileRelease</strong> folder to a host (Netlify, GitHub Pages, itch.io).</li>
+        <li>Open that HTTPS link in <strong>Safari</strong>.</li>
+        <li>Share → <strong>Add to Home Screen</strong>.</li>
+        <li>After the first load, it works without this PC.</li>
+      </ol>
+      <p class="hint">Local test only: start-mobile.bat on this computer. A phone on Wi-Fi can use your PC IP until you host it.</p>
+      <button class="btn to-menu" type="button">BACK</button>
+    </main>
+
+    <main id="scene-collections" class="scene hidden collections-scene">
+      <header class="col-header">
+        <h2>Collections</h2>
+        <p id="col-count" class="col-count">00 / 00 ACHIEVEMENTS UNLOCKED</p>
+      </header>
+      <div class="col-main">
+        <div class="col-rail">
+          <button id="col-back" class="btn ghost" type="button">← BACK</button>
+          <div id="col-tabs"></div>
+        </div>
+        <div id="col-body" class="col-body"></div>
+      </div>
+      <footer class="col-footer">1 PERSONNEL  ·  2 CREDITS  ·  3 GALLERY  ·  4 EXTRAS  ·  ESC return</footer>
+    </main>
+  </div>
+
+  <div id="jumpscare" class="overlay jumpscare hidden">
+    <img id="jumpscare-img" alt="Jumpscare" />
+  </div>
+  <div id="passive-scare" class="overlay jumpscare hidden">
+    <img id="passive-scare-img" alt="" />
+  </div>
+
+  <div id="ach-toast" class="ach-toast hidden" role="status">
+    <img id="ach-toast-img" alt="" />
+    <div>
+      <strong id="ach-toast-name">Achievement</strong>
+      <span id="ach-toast-desc"></span>
+    </div>
+  </div>
+
+  <aside id="pause" class="overlay hidden">
+    <div class="sheet">
+      <h3>PAUSED</h3>
+      <p class="hint">Night clock, doors, animatronics, and sound are frozen.</p>
+      <button id="btn-resume" class="btn primary" type="button">RESUME</button>
+      <button id="btn-pause-settings" class="btn" type="button">SETTINGS</button>
+      <button class="btn to-menu" type="button">MAIN MENU</button>
+    </div>
+  </aside>
+
+  <aside id="settings" class="overlay settings-overlay hidden">
+    <div class="settings-panel">
+      <header class="settings-head">
+        <h3>SETTINGS</h3>
+        <p class="settings-esc">ESC to return</p>
+      </header>
+      <nav id="settings-tabs" class="settings-tabs"></nav>
+      <div id="settings-body" class="settings-body"></div>
+      <footer class="settings-foot">
+        <button id="settings-back" class="settings-btn" type="button">Back</button>
+        <button id="settings-reset" class="settings-btn danger" type="button">Reset Defaults</button>
+      </footer>
+    </div>
+  </aside>
+  <div id="perf-overlay" class="perf-overlay hidden">FPS --</div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

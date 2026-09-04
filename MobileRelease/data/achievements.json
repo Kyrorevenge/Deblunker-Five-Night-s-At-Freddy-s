@@ -1,0 +1,7 @@
+[
+  {"id": "night_1", "name": "First Night Survivor", "description": "Survive 1 night at Freddy's", "image": "Images/Acheivments/gear.png", "rarity": "common"},
+  {"id": "har_har", "name": "HAR HAR HAR", "description": "Encounter Freddy in your office", "image": "Images/Acheivments/Fred_Ach.png", "rarity": "common"},
+  {"id": "bon_bon_bon", "name": "Bon Bon Bon", "description": "Encounter Bonnie in your office", "image": "Images/Acheivments/Bon_Ach.png", "rarity": "common"},
+  {"id": "boop", "name": "Boop!", "description": "Boop 3 hidden Freddy noses.", "image": "Images/Acheivments/gear.png", "rarity": "uncommon"},
+  {"id": "apreesh", "name": "apreesh", "description": "Thanks for checking the credits.", "image": "Images/Acheivments/gear.png", "rarity": "common", "hidden": true}
+]

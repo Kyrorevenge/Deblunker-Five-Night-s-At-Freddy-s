@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animations>
+  <anim name="CameraMovement" loop="true">
+    <frame index="0" name="Frame (7)" x="0" y="0" w="1280" h="720" />
+    <frame index="1" name="Frame (8)" x="0" y="720" w="1280" h="720" />
+    <frame index="2" name="Frame (15)" x="0" y="1440" w="1280" h="720" />
+    <frame index="3" name="Frame (16)" x="0" y="2160" w="1280" h="720" />
+    <frame index="4" name="Frame (23)" x="0" y="2880" w="1280" h="720" />
+    <frame index="5" name="Frame (32)" x="0" y="3600" w="1280" h="720" />
+    <frame index="6" name="Frame (33)" x="0" y="4320" w="1280" h="720" />
+    <frame index="7" name="Frame (34)" x="0" y="5040" w="1280" h="720" />
+    <frame index="8" name="Frame (35)" x="0" y="5760" w="1280" h="720" />
+    <frame index="9" name="Frame (36)" x="0" y="6480" w="1280" h="720" />
+    <frame index="10" name="Frame (39)" x="0" y="7200" w="1280" h="720" />
+    <frame index="11" name="Frame (40)" x="0" y="7920" w="1280" h="720" />
+    <frame index="12" name="Frame (41)" x="0" y="8640" w="1280" h="720" />
+    <frame index="13" name="Frame (42)" x="0" y="9360" w="1280" h="720" />
+    <frame index="14" name="Frame (43)" x="0" y="10080" w="1280" h="720" />
+    <frame index="15" name="Frame (46)" x="0" y="10800" w="1280" h="720" />
+    <frame index="16" name="Frame (47)" x="0" y="11520" w="1280" h="720" />
+    <frame index="17" name="Frame (48)" x="0" y="12240" w="1280" h="720" />
+    <frame index="18" name="Frame (50)" x="0" y="12960" w="1280" h="720" />
+    <frame index="19" name="Frame (51)" x="0" y="13680" w="1280" h="720" />
+    <frame index="20" name="Frame (54)" x="0" y="14400" w="1280" h="720" />
+    <frame index="21" name="Frame (55)" x="0" y="15120" w="1280" h="720" />
+    <frame index="22" name="Frame (56)" x="0" y="15840" w="1280" h="720" />
+    <frame index="23" name="Frame (57)" x="0" y="16560" w="1280" h="720" />
+    <frame index="24" name="Frame (58)" x="0" y="17280" w="1280" h="720" />
+    <frame index="25" name="Frame (61)" x="0" y="18000" w="1280" h="720" />
+    <frame index="26" name="Frame (62)" x="0" y="18720" w="1280" h="720" />
+    <frame index="27" name="Frame (63)" x="0" y="19440" w="1280" h="720" />
+    <frame index="28" name="Frame (64)" x="0" y="20160" w="1280" h="720" />
+    <frame index="29" name="Frame (65)" x="0" y="20880" w="1280" h="720" />
+    <frame index="30" name="Frame (68)" x="0" y="21600" w="1280" h="720" />
+    <frame index="31" name="Frame (69)" x="0" y="22320" w="1280" h="720" />
+    <frame index="32" name="Frame (70)" x="0" y="23040" w="1280" h="720" />
+    <frame index="33" name="Frame (71)" x="0" y="23760" w="1280" h="720" />
+    <frame index="34" name="Frame (72)" x="0" y="24480" w="1280" h="720" />
+    </anim>
+  </animations>
